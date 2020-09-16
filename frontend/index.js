@@ -102,11 +102,9 @@ function handleGameOver(data) {
   gameActive = false;
 
   if (data.winner === playerNumber) {
-    console.log('You Win!');
-    init();
+    alert('You Win!');
   } else {
-    console.log('You Lose :(');
-    init();
+    alert('You Lose :(');
   }
 }
 
