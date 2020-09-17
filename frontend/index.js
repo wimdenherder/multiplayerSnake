@@ -42,7 +42,9 @@ function onOpen() {
     if(gameCode) {
         console.log('Start game with gameCode: ' + gameCode);
         gameCodeInput.value = gameCode;
+        console.log('scoreWon.value = 0;');
         scoreWon.value = 0;
+        console.log('scoreLost.value = 0;');
         scoreLost.value = 0;
         joinGame();
     }
