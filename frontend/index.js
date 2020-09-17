@@ -31,7 +31,7 @@ function onOpen() {
     const urlParams = new URLSearchParams(queryString);
     const gameCode = urlParams.get('gameCode');
     if(gameCode) {
-        console.log('gameCode is ' + gameCode);
+        console.log('Start game with gameCode: ' + gameCode);
         gameCodeInput.value = gameCode;
         joinGame();
     }
