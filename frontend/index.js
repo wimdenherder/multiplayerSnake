@@ -21,7 +21,13 @@ const gameCodeDisplay = document.getElementById('gameCodeDisplay');
 newGameBtn.addEventListener('click', newGame);
 joinGameBtn.addEventListener('click', joinGame);
 
-(() => onOpen())();
+// source: https://stackoverflow.com/questions/9899372/pure-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-when-t
+// and here's the trick (works everywhere)
+function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+// use like
+r(function(){
+    onOpen();
+});
 
 function onOpen() {
     const queryString = window.location.search;
