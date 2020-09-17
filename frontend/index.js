@@ -124,7 +124,8 @@ function handleGameOver(data) {
 }
 
 function handleGameCode(gameCode) {
-  gameCodeDisplay.innerText = gameCode;
+  gameCodeDisplay.innerText = "https://musing-mcnulty-7de8aa.netlify.app/?gameCode=" + gameCode;
+  gameCodeDisplay.href = "https://musing-mcnulty-7de8aa.netlify.app/?gameCode=" + gameCode;
 }
 
 function handleUnknownCode() {
