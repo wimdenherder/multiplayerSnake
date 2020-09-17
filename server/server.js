@@ -11,6 +11,12 @@ io.on('connection', client => {
   client.on('keydown', handleKeydown);
   client.on('newGame', handleNewGame);
   client.on('joinGame', handleJoinGame);
+  client.on('restartGame', handleRestartGame);
+
+  function handleRestartGame() {
+    initGame();
+    startGameInterval(roomName);
+  }
 
   function handleJoinGame(roomName) {
     const room = io.sockets.adapter.rooms[roomName];

@@ -24,6 +24,13 @@ const scoreLost = document.getElementById('scoreLost');
 newGameBtn.addEventListener('click', newGame);
 joinGameBtn.addEventListener('click', joinGame);
 
+
+let canvas, ctx;
+let playerNumber;
+let gameActive = false;
+let won = 0;
+let lost = 0;
+
 // source: https://stackoverflow.com/questions/9899372/pure-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-when-t
 // and here's the trick (works everywhere)
 function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -42,10 +49,8 @@ function onOpen() {
     if(gameCode) {
         console.log('Start game with gameCode: ' + gameCode);
         gameCodeInput.value = gameCode;
-        console.log('scoreWon.value = 0;');
-        scoreWon.value = 0;
-        console.log('scoreLost.value = 0;');
-        scoreLost.value = 0;
+        scoreWon.innerText = won;
+        scoreLost.innerText = lost;
         joinGame();
     }
 }
@@ -61,9 +66,6 @@ function joinGame() {
   init();
 }
 
-let canvas, ctx;
-let playerNumber;
-let gameActive = false;
 
 function init() {
   initialScreen.style.display = "none";
@@ -130,10 +132,21 @@ function handleGameOver(data) {
   gameActive = false;
 
   if (data.winner === playerNumber) {
+    won++;
     alert('You Win!');
   } else {
+    lost++;
     alert('You Lose :(');
   }
+
+  setTimeout(() => {
+      restartGame();
+  }, 2000);
+}
+
+function restartGame() {
+    gameActive = true;
+    socket.emit('restartGame');
 }
 
 function handleGameCode(gameCode) {
