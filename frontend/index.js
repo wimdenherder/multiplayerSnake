@@ -21,6 +21,21 @@ const gameCodeDisplay = document.getElementById('gameCodeDisplay');
 newGameBtn.addEventListener('click', newGame);
 joinGameBtn.addEventListener('click', joinGame);
 
+(() => onOpen())();
+
+function onOpen() {
+    const queryString = window.location.search;
+    if(!queryString) return;
+    console.log(queryString);
+    // ?product=shirt&color=blue&newuser&size=m
+    const urlParams = new URLSearchParams(queryString);
+    const gameCode = urlParams.get('gameCode');
+    if(gameCode) {
+        console.log('gameCode is ' + gameCode);
+        gameCodeInput.value = gameCode;
+        joinGame();
+    }
+}
 
 function newGame() {
   socket.emit('newGame');
