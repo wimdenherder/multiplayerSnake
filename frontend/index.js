@@ -17,6 +17,9 @@ const newGameBtn = document.getElementById('newGameButton');
 const joinGameBtn = document.getElementById('joinGameButton');
 const gameCodeInput = document.getElementById('gameCodeInput');
 const gameCodeDisplay = document.getElementById('gameCodeDisplay');
+const scoreWon = document.getElementById('scoreWon');
+const scoreLost = document.getElementById('scoreLost');
+
 
 newGameBtn.addEventListener('click', newGame);
 joinGameBtn.addEventListener('click', joinGame);
@@ -39,6 +42,7 @@ function onOpen() {
     if(gameCode) {
         console.log('Start game with gameCode: ' + gameCode);
         gameCodeInput.value = gameCode;
+        scoreWon = scoreLost = 0;
         joinGame();
     }
 }
