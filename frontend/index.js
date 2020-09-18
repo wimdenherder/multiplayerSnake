@@ -19,6 +19,8 @@ const gameCodeInput = document.getElementById('gameCodeInput');
 const gameCodeDisplay = document.getElementById('gameCodeDisplay');
 const scoreWon = document.getElementById('scoreWon');
 const scoreLost = document.getElementById('scoreLost');
+const message = document.getElementById('message');
+
 
 
 newGameBtn.addEventListener('click', newGame);
@@ -133,10 +135,10 @@ function handleGameOver(data) {
 
   if (data.winner === playerNumber) {
     won++;
-    alert('You Win!');
+    message.innerText = 'You Win!';
   } else {
     lost++;
-    alert('You Lose :(');
+    message.innerText = 'You Lose!';
   }
 
   setTimeout(() => {
