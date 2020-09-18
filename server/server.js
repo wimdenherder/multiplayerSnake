@@ -14,8 +14,9 @@ io.on('connection', client => {
   client.on('restartGame', handleRestartGame);
 
   function handleRestartGame() {
-    initGame();
-    startGameInterval(roomName);
+    const room = clientRooms[client.id];
+    state[room] = initGame();
+    startGameInterval(room);
   }
 
   function handleJoinGame(roomName) {

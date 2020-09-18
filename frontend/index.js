@@ -4,10 +4,10 @@ const FOOD_COLOUR = '#e66916';
 
 const socket = io('https://polar-savannah-16009.herokuapp.com/');
 
+socket.on('gameCode', handleGameCode);
 socket.on('init', handleInit);
 socket.on('gameState', handleGameState);
 socket.on('gameOver', handleGameOver);
-socket.on('gameCode', handleGameCode);
 socket.on('unknownCode', handleUnknownCode);
 socket.on('tooManyPlayers', handleTooManyPlayers);
 
