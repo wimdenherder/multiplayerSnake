@@ -19,7 +19,7 @@ function clearSockets(io) {
 }
 
 io.on("connection", (client) => {
-  clearSockets(io);
+//   clearSockets(io);
 
   client.on("keydown", handleKeydown);
   client.on("newGame", handleNewGame);
