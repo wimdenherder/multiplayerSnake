@@ -6,20 +6,7 @@ const { makeid } = require("./utils");
 const state = {};
 const clientRooms = {};
 
-function clearSockets(io) {
-  io.of("/")
-    .in("chat")
-    .clients((error, socketIds) => {
-      if (error) throw error;
-
-      socketIds.forEach((socketId) =>
-        io.sockets.sockets[socketId].leave("chat")
-      );
-    });
-}
-
 io.on("connection", (client) => {
-//   clearSockets(io);
 
   client.on("keydown", handleKeydown);
   client.on("newGame", handleNewGame);
